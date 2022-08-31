@@ -1,19 +1,15 @@
-name: find
+name: git
 version: 0.1.0
 
 authors:
+  - William Harris <wharris@upscalews.com>
   - W. Watson <Watson@vulk.coop>
   - Denver Williams <denver@debian.nz>
 
 targets:
-  find:
-    main: find.cr
+  git:
+    main: git.cr
 
 crystal: '>= 1.0.0'
-
-dependencies:
-  halite:
-    github: icyleaf/halite
-    version: ~> 0.12.0
 
 license: MIT
