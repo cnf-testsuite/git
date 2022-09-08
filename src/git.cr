@@ -1,5 +1,10 @@
 require "log"
+require "./utils/system_information.cr"
+
 module GitClient
+  def self.installation_found?
+    git_installation.includes?("git found")
+  end
 
   def self.clone(command)
     Log.info { "GitClient.clone command: #{command}" }
