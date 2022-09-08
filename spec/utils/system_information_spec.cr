@@ -1,9 +1,9 @@
 require "../spec_helper"
 require "colorize"
 require "../../src/utils/utils.cr"
-require "../../src/utils/system_information/git.cr"
+require "../../src/utils/system_information.cr"
 
-describe "Git" do
+describe "System Information" do
 
   it "'git_global_response()' should return the information about the git installation", tags: ["git-prereq"]  do
     (git_global_response(true)).should contain("git version")
