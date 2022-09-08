@@ -1,4 +1,3 @@
-require "file_utils"
 require "colorize"
 require "totem"
 
@@ -60,10 +59,9 @@ def git_global_response(verbose=false)
 end
 
 def git_local_response(verbose=false)
-  current_dir = FileUtils.pwd 
-  Log.for("verbose").info { current_dir } if verbose
-  git = "#{current_dir}/#{TOOLS_DIR}/git/linux-amd64/git"
-  status = Process.run("#{git} version", shell: true, output: git_response = IO::Memory.new, error: stderr = IO::Memory.new)
+  git_path = LOCAL_BINARY_PATH
+  Log.for("verbose").info { git_path } if verbose
+  status = Process.run("#{git_path} version", shell: true, output: git_response = IO::Memory.new, error: stderr = IO::Memory.new)
   Log.for("verbose").info { git_response.to_s } if verbose
   git_response.to_s
 end
