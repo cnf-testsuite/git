@@ -19,3 +19,14 @@ end
 def stdout_failure(msg)
   puts msg.colorize(:red)
 end
+
+def local_git_path
+  if File.exists?(GitClient::BASE_CONFIG)
+    config = Totem.from_file GitClient::BASE_CONFIG
+    if config["git_binary_path"].as_s?
+      return config["git_binary_path"].as_s
+    end
+  end
+
+  FileUtils.pwd + GitClient::DEFAULT_LOCAL_BINARY_PATH
+end

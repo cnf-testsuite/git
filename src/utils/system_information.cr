@@ -1,5 +1,5 @@
 require "colorize"
-require "totem"
+require "../../src/utils/utils.cr"
 
 def git_installation(verbose=false)
   gmsg = "No Global git version found"
@@ -59,9 +59,8 @@ def git_global_response(verbose=false)
 end
 
 def git_local_response(verbose=false)
-  git_path = LOCAL_BINARY_PATH
-  Log.for("verbose").info { git_path } if verbose
-  status = Process.run("#{git_path} version", shell: true, output: git_response = IO::Memory.new, error: stderr = IO::Memory.new)
+  Log.for("verbose").info { local_git_path } if verbose
+  status = Process.run("#{local_git_path} version", shell: true, output: git_response = IO::Memory.new, error: stderr = IO::Memory.new)
   Log.for("verbose").info { git_response.to_s } if verbose
   git_response.to_s
 end
